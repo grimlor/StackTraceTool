@@ -12,6 +12,7 @@
         <Grid x:Name="inputPanel" Margin="0,20,0,20" VerticalAlignment="Stretch">
             <TextBox x:Name="stackTraceInput" TextWrapping="Wrap" Margin="5,5,5,55" AcceptsReturn="True" 
                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                     PlaceholderText="Does your stack trace have ugly '\r\n's? Paste it here!"
                      ScrollViewer.VerticalScrollBarVisibility="Auto"/>
             <Button x:Name="inputButton" Margin="10" Content="Submit Trace" Click="inputButton_Click"
                     VerticalAlignment="Bottom"/>
