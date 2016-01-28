@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="StackTraceTool.CleanupPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:StackTraceTool"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" 
+          HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid x:Name="inputPanel" Margin="0,20,0,20" VerticalAlignment="Stretch">
+            <TextBox x:Name="stackTraceInput" TextWrapping="Wrap" Margin="5,5,5,55" AcceptsReturn="True" 
+                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+            <Button x:Name="inputButton" Margin="10" Content="Submit Trace" Click="inputButton_Click"
+                    VerticalAlignment="Bottom"/>
+        </Grid>
+        <Grid x:Name="outputPanel" Margin="0,20,0,20" VerticalAlignment="Stretch" Visibility="Collapsed">
+            <TextBox x:Name="stackTraceOutput" TextWrapping="Wrap" Margin="5,5,5,55" IsReadOnly="True" 
+                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+            <Button x:Name="resetButton" Margin="10" Content="Reset" Click="resetButton_Click"
+                    VerticalAlignment="Bottom"/>
+        </Grid>
+    </Grid>
+</Page>

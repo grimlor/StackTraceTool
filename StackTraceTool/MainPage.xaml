@@ -7,21 +7,25 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" HorizontalAlignment="Stretch">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" 
-          HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <Grid x:Name="inputPanel" Margin="0,20,0,20" VerticalAlignment="Stretch">
-            <TextBox x:Name="stackTraceInput" TextWrapping="Wrap" Margin="5,5,5,55" AcceptsReturn="True" 
-                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                     ScrollViewer.VerticalScrollBarVisibility="Auto"/>
-            <Button x:Name="inputButton" Margin="10" Content="Submit Trace" Click="inputButton_Click"
-                    VerticalAlignment="Bottom"/>
-        </Grid>
-        <Grid x:Name="outputPanel" Margin="0,20,0,20" VerticalAlignment="Stretch" Visibility="Collapsed">
-            <TextBox x:Name="stackTraceOutput" TextWrapping="Wrap" Margin="5,5,5,55" IsReadOnly="True" 
-                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0"
-                     ScrollViewer.VerticalScrollBarVisibility="Auto"/>
-            <Button x:Name="resetButton" Margin="10" Content="Reset" Click="resetButton_Click"
-                    VerticalAlignment="Bottom"/>
-        </Grid>
-    </Grid>
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="SplitViewStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <SplitView x:Name="ShellSplitView" DisplayMode="CompactOverlay"
+               IsPaneOpen="False" CompactPaneLength="48" OpenPaneLength="200"
+               PaneBackground="{ThemeResource SplitViewBackgroundBrush}">
+        <SplitView.Pane>
+            <StackPanel>
+                <!-- Menu (hamburger) button -->
+                <RadioButton Style="{StaticResource SplitViewMenuButtonStyle}" Click="OnMenuButtonClicked"/>
+                
+                <!-- Cleanup button -->
+                <RadioButton Tag="&#xE8BC;" Content="Cleanup" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnCleanupButtonChecked" IsChecked="True" />
+            </StackPanel>
+        </SplitView.Pane>
+    </SplitView>
 </Page>
