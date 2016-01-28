@@ -20,6 +20,9 @@
                PaneBackground="{ThemeResource SplitViewBackgroundBrush}">
         <SplitView.Pane>
             <StackPanel>
+                <!-- Extremely useful page for icons to use below -->
+                <!-- http://modernicons.io/segoe-mdl2/cheatsheet/ -->
+                
                 <!-- Menu (hamburger) button -->
                 <RadioButton Style="{StaticResource SplitViewMenuButtonStyle}" Click="OnMenuButtonClicked"/>
                 
