@@ -28,6 +28,9 @@
                 
                 <!-- Cleanup button -->
                 <RadioButton Tag="&#xE8BC;" Content="Cleanup" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnCleanupButtonChecked" IsChecked="True" />
+                
+                <!-- Json button -->
+                <RadioButton Tag="&#xE8A4;" Content="Parse Json" Style="{StaticResource SplitViewNavButtonStyle}" Checked="OnParseJsonButtonChecked" />
             </StackPanel>
         </SplitView.Pane>
     </SplitView>

@@ -101,10 +101,15 @@
     <Compile Include="CleanupPage.xaml.cs">
       <DependentUpon>CleanupPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="JsonPresenterPage.xaml.cs">
+      <DependentUpon>JsonPresenterPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ParsedExceptionJson.cs" />
+    <Compile Include="TextBlockOutputHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -128,6 +133,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="CleanupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="JsonPresenterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

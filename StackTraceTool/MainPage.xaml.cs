@@ -24,5 +24,12 @@ namespace StackTraceTool
             if (ShellSplitView.Content != null)
                 ((Frame)ShellSplitView.Content).Navigate(typeof(CleanupPage));
         }
+
+        private void OnParseJsonButtonChecked(object sender, RoutedEventArgs e)
+        {
+            ShellSplitView.IsPaneOpen = false;
+            if (ShellSplitView.Content != null)
+                ((Frame)ShellSplitView.Content).Navigate(typeof(JsonPresenterPage));
+        }
     }
 }
