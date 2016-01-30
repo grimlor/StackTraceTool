@@ -101,6 +101,7 @@
     <Compile Include="CleanupPage.xaml.cs">
       <DependentUpon>CleanupPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="JsonHighlighter.cs" />
     <Compile Include="JsonPresenterPage.xaml.cs">
       <DependentUpon>JsonPresenterPage.xaml</DependentUpon>
     </Compile>

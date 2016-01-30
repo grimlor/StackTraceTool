@@ -32,12 +32,14 @@
                 var toParse = SanitizeInput(jsonInput.Text, out sanitizationErrors);
                 try
                 {
-                    var exception = JsonConvert.DeserializeObject<ParsedExceptionJson>(toParse);
+                    //var exception = JsonConvert.DeserializeObject<ParsedExceptionJson>(toParse);
                     if (!string.IsNullOrEmpty(sanitizationErrors))
                     {
                         jsonOutput.OutputItalic(sanitizationErrors + Environment.NewLine);
                     }
-                    OutputException(exception);
+                    jsonOutput.OutputSyntaxHighlightedJson(toParse);
+
+                    //OutputException(exception);
                 }
                 catch (JsonReaderException)
                 {
