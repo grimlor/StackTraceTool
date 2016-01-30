@@ -13,35 +13,45 @@
             var pattern = @"(¤(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\¤])*¤(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)".Replace('¤', '"');
             var matches = Regex.Matches(jsonToOutput, pattern);
 
-            foreach (Match match in matches)
+            var indentLevel = 0;
+            for (var i = 0; i < matches.Count; ++i)
             {
-                if (Regex.IsMatch(match.Value, @"^¤".Replace('¤', '"')))
+                if (Regex.IsMatch(matches[i].Value, @"^¤".Replace('¤', '"')))
                 {
-                    if (Regex.IsMatch(match.Value, ":$"))
+                    if (Regex.IsMatch(matches[i].Value, ":$"))
                     {
                         // key
-                        target.OutputBold(match.Value.Replace('\"', '\0'));
+                        for (var j = 0; j < indentLevel; j++)
+                        {
+                            target.Output("\t");
+                        }
+                        target.OutputBold(matches[i].Value.Replace('\"', '\0') + "\t");
+                        if (i < matches.Count && Regex.IsMatch(matches[i + 1].Value, ":$"))
+                        {
+                            target.Output(Environment.NewLine);
+                            indentLevel++;
+                        }
                     }
                     else
                     {
                         // string
-                        target.OutputWithFormat(match.Value + Environment.NewLine, fontColor: Colors.DarkGreen);
+                        target.OutputWithFormat(matches[i].Value + Environment.NewLine, fontColor: Colors.DarkGreen);
                     }
                 }
-                else if (Regex.IsMatch(match.Value, "true|false"))
+                else if (Regex.IsMatch(matches[i].Value, "true|false"))
                 {
                     // boolean
-                    target.OutputWithFormat(match.Value.Replace('\"', '\0') + Environment.NewLine, fontColor: Colors.DarkBlue);
+                    target.OutputWithFormat(matches[i].Value.Replace('\"', '\0') + Environment.NewLine, fontColor: Colors.DarkBlue);
                 }
-                else if (Regex.IsMatch(match.Value, "null"))
+                else if (Regex.IsMatch(matches[i].Value, "null"))
                 {
                     // null
-                    target.OutputWithFormat(match.Value.Replace('\"', '\0') + Environment.NewLine, fontColor: Colors.DarkBlue);
+                    target.OutputWithFormat(matches[i].Value.Replace('\"', '\0') + Environment.NewLine, fontColor: Colors.DarkBlue);
                 }
                 else
                 {
                     // number
-                    target.OutputWithFormat(match.Value.Replace('\"', '\0') + Environment.NewLine, fontColor: Colors.DarkCyan);
+                    target.OutputWithFormat(matches[i].Value.Replace('\"', '\0') + Environment.NewLine, fontColor: Colors.DarkCyan);
                 }
             }
         }

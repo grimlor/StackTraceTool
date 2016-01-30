@@ -32,14 +32,11 @@
                 var toParse = SanitizeInput(jsonInput.Text, out sanitizationErrors);
                 try
                 {
-                    //var exception = JsonConvert.DeserializeObject<ParsedExceptionJson>(toParse);
                     if (!string.IsNullOrEmpty(sanitizationErrors))
                     {
                         jsonOutput.OutputItalic(sanitizationErrors + Environment.NewLine);
                     }
                     jsonOutput.OutputSyntaxHighlightedJson(toParse);
-
-                    //OutputException(exception);
                 }
                 catch (JsonReaderException)
                 {
@@ -50,20 +47,6 @@
             jsonInput.Text = string.Empty;
             inputPanel.Visibility = Visibility.Collapsed;
             outputPanel.Visibility = Visibility.Visible;
-        }
-
-        private void OutputException(ParsedExceptionJson exception)
-        {
-            jsonOutput.OutputBold("ErrorMessage:" + Environment.NewLine);
-            jsonOutput.Output(exception.ErrorDetails.ErrorMessage + Environment.NewLine);
-            jsonOutput.OutputBold("ExceptionType:" + Environment.NewLine);
-            jsonOutput.Output(exception.ErrorDetails.ExceptionType + Environment.NewLine);
-            jsonOutput.OutputBold("StackTrace:" + Environment.NewLine);
-            jsonOutput.Output(exception.ErrorDetails.StackTrace + Environment.NewLine);
-            jsonOutput.OutputBold("InnerExceptionDetail:" + Environment.NewLine);
-            jsonOutput.Output(exception.ErrorDetails.InnerExceptionDetail + Environment.NewLine);
-            jsonOutput.OutputBold("UnexpectedException:" + Environment.NewLine);
-            jsonOutput.Output(exception.ErrorDetails.UnexpectedException + Environment.NewLine);
         }
 
         private static string SanitizeInput(string input, out string errors)
