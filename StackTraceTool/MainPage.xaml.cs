@@ -20,16 +20,19 @@ namespace StackTraceTool
 
         private void OnCleanupButtonChecked(object sender, RoutedEventArgs e)
         {
-            ShellSplitView.IsPaneOpen = false;
-            if (ShellSplitView.Content != null)
-                ((Frame)ShellSplitView.Content).Navigate(typeof(CleanupPage));
+            NavigateTo<CleanupPage>(e);
         }
 
         private void OnParseJsonButtonChecked(object sender, RoutedEventArgs e)
         {
+            NavigateTo<JsonPresenterPage>(e);
+        }
+
+        private void NavigateTo<T>(RoutedEventArgs e) where T : Page
+        {
             ShellSplitView.IsPaneOpen = false;
             if (ShellSplitView.Content != null)
-                ((Frame)ShellSplitView.Content).Navigate(typeof(JsonPresenterPage));
+                ((Frame)ShellSplitView.Content).Navigate(typeof(T), e);
         }
     }
 }
